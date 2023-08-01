@@ -13,10 +13,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+//        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+//        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+//        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+//        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        
+        
+        // вместо let _ указываем название сцены (в отличие от сториборда где сцена создается другим способом)
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        // из windowScene создаем window
+        let myWindow = UIWindow(windowScene: windowScene )
+        // теперь у window назначаем корневым контороллером табБарКонтроллер
+        myWindow.rootViewController = createNavigationController()
+        // делаем window ключевым - кладем его в основу нашей иерархии
+        myWindow.makeKeyAndVisible()
+        // присваиваем ссылку myWindow на window
+        self.window = myWindow
+        
+        
+        
+    }
+    
+    // функцию будет возвращать UINavigationController
+    func createNavigationController() -> UINavigationController {
+        let someNavigationController = UINavigationController(rootViewController: ViewController())
+//        // у UINavigationController есть свойство .tabBarItem которое будет передано в UITabBarController
+//        someNavigationController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "text.alignleft"), tag: 0)
+        return someNavigationController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
