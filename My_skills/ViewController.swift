@@ -64,8 +64,6 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 { return 1 }
-//        if section == 1 { return postArray.count }
         return 3
     }
     
@@ -86,16 +84,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
         
         if indexPath.section == 0 && indexPath.row == 1 {
-            
-            
             let cell = SkillsTableViewCell(style: .default, reuseIdentifier: "SkillsTableViewCell")
-
-
             cellForReturn = cell
         }
         
         if indexPath.section == 0 && indexPath.row == 2 {
-            
             let cell = AboutMeTableViewCell(style: .default, reuseIdentifier: "AboutMeTableViewCell")
             cellForReturn = cell
         }
